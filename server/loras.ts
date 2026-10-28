@@ -55,11 +55,12 @@ export function familyOf(keys: string[]): LoraFamily | 'not-lora' {
   const lora = keys.some((k) => /\.(lora_[AB]|lora_up|lora_down|lora\.(up|down))(\.[a-z]+)?\.weight$/.test(k) || /\.alpha$/.test(k));
   if (!lora) return 'not-lora';
   const has = (re: RegExp) => keys.some((k) => re.test(k));
+  // [._] between tokens: diffusers keys use dots, kohya keys (lora_unet_transformer_blocks_0_...) use underscores.
   if (has(/(double|single)_stream_modulation/)) return 'flux2';
-  if (has(/double_blocks\.\d+\./) || has(/lora_unet_double_blocks/)) return 'flux';
-  if (has(/transformer_blocks\.\d+\.(attn\.add_[qkv]_proj|img_mlp|txt_mlp|img_mod)/)) return 'qwen';
-  if (has(/transformer_blocks\.\d+\.(attn1|attn2|audio_attn|ff)\./)) return 'ltx';
-  if (has(/(^|\.)blocks\.\d+\.(cross_attn|self_attn)\./)) return 'wan';
+  if (has(/double_blocks[._]\d+[._]/)) return 'flux';
+  if (has(/transformer_blocks[._]\d+[._](attn[._]add_[qkv]_proj|img_mlp|txt_mlp|img_mod)/)) return 'qwen';
+  if (has(/transformer_blocks[._]\d+[._](attn1|attn2|audio_attn|ff)[._]/)) return 'ltx';
+  if (has(/(^|[._])blocks[._]\d+[._](cross_attn|self_attn)[._]/)) return 'wan';
   return 'other';
 }
 
