@@ -1,0 +1,22 @@
+node_modules
+data/
+dist/
+.playwright-mcp/
+*.log
+
+# local config
+.env
+
+# third-party UI reference screenshots (never ship or commit)
+docs/ref-screens/
+
+# agent worktrees
+.claude/worktrees/
+# local test scratch
+mcp/.*.mts
+# local version-backup hook
+.version-timestamp
+VERSION_NOTES.md
+
+# Internal planning and contest notes (kept on disk, never published)
+docs/internal/

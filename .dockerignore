@@ -1,0 +1,13 @@
+# Runpod image build context (deploy/runpod/Dockerfile). Keep secrets and local state out.
+.git
+node_modules
+dist
+data
+.env
+**/.env
+*.log
+.claude
+.playwright-mcp
+docs/ref-screens
+.version-timestamp
+VERSION_NOTES.md

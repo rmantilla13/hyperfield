@@ -1,0 +1,57 @@
+{
+  "name": "openfield",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,web -c red,blue \"tsx watch server/index.ts\" \"vite\"",
+    "build": "npm run typecheck && vite build",
+    "start": "tsx server/index.ts --production",
+    "test:judge": "tsx scripts/test-judge.ts",
+    "typecheck": "tsc -p tsconfig.json && tsc -p server/tsconfig.json && tsc -p mcp/tsconfig.json",
+    "models": "tsx scripts/fetch-models.ts",
+    "doctor": "tsx scripts/doctor.ts",
+    "docs:models": "tsx scripts/gen-models-doc.ts",
+    "presets": "tsx scripts/render-presets.ts",
+    "effects:preview": "tsx scripts/effect-preview.ts",
+    "mcp": "tsx mcp/server.ts",
+    "mcp:smoke": "tsx mcp/smoke.ts",
+    "mcp:check": "tsx mcp/bodies.check.ts",
+    "workflows": "tsx scripts/export-workflows.ts"
+  },
+  "dependencies": {
+    "@comfyorg/sdk": "^0.5.0",
+    "@fastify/static": "^10.1.6",
+    "@fastify/websocket": "^11.0.1",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@types/three": "^0.186.0",
+    "better-sqlite3": "^11.7.0",
+    "fastify": "^5.2.0",
+    "qrcode-generator": "^2.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.186.1",
+    "ws": "^8.18.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  },
+  "description": "OpenField: an open-source, local-first creative suite (video, image, director, loops) on ComfyUI and the Comfy SDK.",
+  "license": "MIT"
+}

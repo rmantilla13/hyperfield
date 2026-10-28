@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#000000">
+<title>OpenField · Film the move</title>
+<style>
+  :root {
+    --bg: #000; --panel: #121110; --panel-2: #1a1917; --line: rgba(255,236,210,.1);
+    --text: #efeae0; --dim: #a8a196; --mute: #6f695f;
+    --accent: #ffb547; --accent-ink: #1c0e00; --bad: #ff6470; --ok: #7be0a6;
+    --lamp: linear-gradient(180deg, #ffd794 0%, #ffb547 42%, #ec8a2c 100%);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); }
+  body {
+    font: 16px/1.45 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    display: flex; flex-direction: column; padding: max(22px, env(safe-area-inset-top)) 20px max(22px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; }
+  .brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px 2px rgba(255,181,71,.7); }
+  main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  h1 { margin: 0; font-size: clamp(38px, 12vw, 60px); line-height: .92; font-weight: 850; text-transform: uppercase; letter-spacing: -.01em; }
+  h1 span { color: var(--accent); }
+  p { margin: 0; color: var(--dim); }
+  .lamp {
+    display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
+    padding: 26px 20px; border-radius: 20px; border: 0; cursor: pointer;
+    background: var(--lamp); color: var(--accent-ink); font-family: inherit; font-size: 22px; font-weight: 850; line-height: 1; text-transform: uppercase; letter-spacing: .04em;
+    box-shadow: 0 14px 44px -12px rgba(255,150,50,.75), 0 0 0 1px rgba(255,200,120,.25), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .lamp:active { transform: translateY(1px); filter: brightness(.96); }
+  .ghost { background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 14px; padding: 14px; font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1; width: 100%; cursor: pointer; }
+  input[type=file] { display: none; }
+  .bar { height: 8px; border-radius: 8px; background: var(--panel-2); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--lamp); transition: width .2s; }
+  .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .err { color: var(--bad); }
+  .done-dot { width: 64px; height: 64px; border-radius: 50%; background: var(--lamp); box-shadow: 0 0 50px 6px rgba(255,181,71,.45); }
+  footer { color: var(--mute); font-size: 13px; text-align: center; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="brand"><i></i>OpenField</div>
+  <main>
+    <section id="pick">
+      <h1>Film <span>the move.</span></h1>
+      <p style="margin:14px 0 22px">2 to 12 seconds. Hold the phone the way the shot should be framed.</p>
+      <label class="lamp" for="cam">
+        <svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="9" height="9" rx="2"/><path d="M11 7l3-2v6l-3-2"/></svg>
+        Film the move
+      </label>
+      <input id="cam" type="file" accept="video/*" capture="environment">
+      <label class="ghost" for="lib" style="display:block;text-align:center;margin-top:12px">Pick a clip you already shot</label>
+      <input id="lib" type="file" accept="video/*">
+    </section>
+
+    <section id="send" class="card" hidden>
+      <div style="font-weight:700" id="fname">clip</div>
+      <div class="bar"><i id="fill"></i></div>
+      <div class="row"><span id="sent">0 MB</span><span id="pct">0%</span></div>
+    </section>
+
+    <section id="fail" class="card" hidden>
+      <div class="err" id="why">Upload failed.</div>
+      <button class="ghost" id="retry" type="button">Try another clip</button>
+    </section>
+
+    <section id="done" hidden style="display:flex;flex-direction:column;align-items:flex-start;gap:20px">
+      <div class="done-dot"></div>
+      <h1>Sent. <span>Look at your screen.</span></h1>
+      <p>This link is used up. Scan a new code to send another take.</p>
+    </section>
+  </main>
+  <footer id="foot">Sends one clip straight to OpenField on your computer.</footer>
+
+<script>
+(function () {
+  var MAX = Number('__MAX_BYTES__');
+  var EXPIRES = Number('__EXPIRES_AT__');
+  var $ = function (id) { return document.getElementById(id); };
+  var mb = function (n) { return (n / 1048576).toFixed(n > 1048576 * 10 ? 0 : 1) + ' MB'; };
+  var finished = false;
+
+  function show(id) {
+    ['pick', 'send', 'fail', 'done'].forEach(function (s) { $(s).hidden = s !== id; });
+  }
+  function fail(msg) { $('why').textContent = msg; show('fail'); }
+
+  var tick = setInterval(function () {
+    if (finished) return clearInterval(tick);
+    var left = Math.max(0, EXPIRES - Date.now());
+    if (!left) { clearInterval(tick); fail('This link expired. Open a new code on your computer.'); $('retry').hidden = true; return; }
+    var m = Math.floor(left / 60000), s = Math.floor(left / 1000) % 60;
+    $('foot').textContent = 'Link works for ' + m + ':' + (s < 10 ? '0' : '') + s + ' more. One clip, then it closes.';
+  }, 1000);
+
+  function send(file) {
+    if (!file) return;
+    // Some Android pickers leave type empty; the computer checks the bytes anyway.
+    var type = file.type || 'video/mp4';
+    if (!/^video\//.test(type)) return fail('That is not a video. Pick a clip from your camera.');
+    if (file.size > MAX) return fail('That clip is ' + mb(file.size) + '. The limit is ' + mb(MAX) + ', so film a shorter take.');
+    $('fname').textContent = file.name || 'Your clip';
+    $('fill').style.width = '0%';
+    show('send');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', location.pathname.replace(/\/$/, '') + '/upload');
+    xhr.setRequestHeader('Content-Type', type);
+    xhr.setRequestHeader('X-Filename', encodeURIComponent(file.name || 'phone'));
+    xhr.upload.onprogress = function (e) {
+      if (!e.lengthComputable) return;
+      var p = Math.round((e.loaded / e.total) * 100);
+      $('fill').style.width = p + '%';
+      $('pct').textContent = p === 100 ? 'Handing over...' : p + '%';
+      $('sent').textContent = mb(e.loaded) + ' of ' + mb(e.total);
+    };
+    xhr.onload = function () {
+      var body = {};
+      try { body = JSON.parse(xhr.responseText); } catch (e) {}
+      if (xhr.status === 200) { finished = true; show('done'); $('foot').textContent = 'OpenField'; return; }
+      fail(body.error || ('Upload failed (' + xhr.status + ').'));
+      if (xhr.status === 404 || xhr.status === 410) $('retry').hidden = true;
+    };
+    xhr.onerror = function () { fail('Lost the connection to your computer. Stay on the same Wi-Fi and try again.'); };
+    xhr.send(file);
+  }
+
+  ['cam', 'lib'].forEach(function (id) {
+    $(id).addEventListener('change', function (e) { send(e.target.files && e.target.files[0]); e.target.value = ''; });
+  });
+  $('retry').addEventListener('click', function () { show('pick'); });
+})();
+</script>
+</body>
+</html>
