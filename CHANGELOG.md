@@ -26,7 +26,7 @@ Everything added since the first build (0.1.0). Measurements and implementation 
 - Redesigned interface, drag and drop media anywhere, render times recorded from ComfyUI's history.
 - Verified third-party license notices; the server refuses non-local hosts and never serves file paths taken from a request.
 - Apps gallery: one-sentence blurbs, "New" on Stage, Director, Mirror and Effects, "Top" on Video; Explore leads with Stage.
-- Public README, `docs/PARITY.md` feature comparison, `docs/MEDIA.md` provenance for every sample file.
+- Public README, `docs/MEDIA.md` provenance for every sample file.
 - 720p by default for every video app on 24 GB or more (480p below), with per-app caps.
 
 ## Details

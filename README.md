@@ -54,8 +54,6 @@ Built for Comfy's Open Source Higgsfield competition. MIT licensed.
 
 ## What is new here
 
-Features Higgsfield's public product pages and changelog do not list (checked 2026-10-17):
-
 - **Phone to Mirror.** Scan a QR code, film a move on your phone, and the clip
   lands in Mirror as the motion source.
 - **Reshoot after the fact.** Move the camera on a clip you already have.
@@ -67,17 +65,11 @@ Features Higgsfield's public product pages and changelog do not list (checked 20
 - **All local.** Renders run on your GPU and land in your folders. No credits,
   no paid account, no upload. A free Hugging Face account and read token fetch
   the gated LTX-2.5 weights.
-
-Two more have hosted counterparts at Higgsfield (3D Jutsu and its MCP). Here they
-run locally on open weights:
-
 - **Stage, greybox to shot.** Block boxes, figures, props and your own .glb models
   in the browser, set a lens and a camera path, and the LTX-2.5 Layout-to-Render
   IC-LoRA renders a finished shot that follows the blocking exactly.
 - **MCP for agents.** 31 tools let an agent direct, render, check and finish shots
   end to end on your machine.
-
-The full feature comparison is in [`docs/PARITY.md`](docs/PARITY.md).
 
 ### How Stage differs
 
