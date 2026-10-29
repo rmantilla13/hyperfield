@@ -110,8 +110,8 @@ Browser (Vite + React)  ──>  OpenField server (Fastify, :3161)
 
 | | |
 | --- | --- |
-| GPU | NVIDIA, 24 GB VRAM for video. Built and measured on a 32 GB RTX 5090. Video renders at 720p by default on 24 GB or more, 480p below (Setup > Render size changes it). Some apps cap their size: Mirror, Restyle, Object swap, Effects, Speak, Extend and Transitions stop at 720p, Reshoot at 480p. 12 to 16 GB runs stills. |
-| OS | Linux or Windows, or WSL2 driving a Windows ComfyUI. macOS is unsupported (the video stack needs NVIDIA). |
+| GPU | 24 GB VRAM for video. Built and measured on a 32 GB RTX 5090; NVIDIA is the only vendor tested. AMD through ROCm on Linux is untested (reports welcome). Video renders at 720p by default on 24 GB or more, 480p below (Setup > Render size changes it). Some apps cap their size: Mirror, Restyle, Object swap, Effects, Speak, Extend and Transitions stop at 720p, Reshoot at 480p. 12 to 16 GB runs stills. |
+| OS | Linux or Windows, or WSL2 driving a Windows ComfyUI. macOS is untested. |
 | Software | Node 22+, Python 3.10 to 3.12, ComfyUI 0.38 or newer, `ffmpeg` and `ffprobe` on PATH |
 | Disk | 72 GB for the core install, about 334 GB for every bundle |
 

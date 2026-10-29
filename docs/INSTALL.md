@@ -13,9 +13,9 @@ an agent to run the whole thing.
 
 | | |
 | --- | --- |
-| GPU | NVIDIA, 24 GB VRAM realistically. Built and measured on a 32 GB RTX 5090. |
+| GPU | 24 GB VRAM realistically. Built and measured on a 32 GB RTX 5090; NVIDIA is the only vendor tested. AMD through ROCm on Linux is untested (reports welcome). |
 | Disk | About 72 GB for the core models, about 334 GB for everything. |
-| OS | Linux or Windows, or WSL2 driving a Windows ComfyUI. macOS is unsupported: the video stack needs an NVIDIA GPU. |
+| OS | Linux or Windows, or WSL2 driving a Windows ComfyUI. macOS is untested. |
 | Node | 22 or newer (`node -v`). |
 | Python | 3.10 to 3.12, for ComfyUI. |
 | HuggingFace | A free account plus a read token. LTX-2.5 is gated. |
