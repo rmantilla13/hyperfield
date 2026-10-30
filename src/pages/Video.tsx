@@ -364,7 +364,7 @@ function HowItWorks() {
   return (
     <div className="hero-empty">
       <div className="label" style={{ marginBottom: 14 }}>Runs on your GPU · open weights</div>
-      <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Direct a shot <span className="hl">in three moves</span></div>
+      <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Direct a shot <span className="hl">in three moves</span></div>
       <div className="steps3">
         <div><span className="label">01</span><b>Add a frame</b><span className="dim">Drop a still, or skip it and go text to video.</span></div>
         <div><span className="label">02</span><b>Pick the motion</b><span className="dim">Camera moves and effects, as presets.</span></div>

@@ -129,7 +129,7 @@ export default function MirrorPage() {
   return (
     <div className="rail-layout" style={{ gridTemplateColumns: '360px 1fr' }}>
       <aside className="rail">
-        <div className="display" style={{ fontSize: 26 }}>Mirror</div>
+        <div className="display" style={{ fontSize: 17 }}>Mirror</div>
         <div className="tabs" style={{ borderBottom: 0, marginTop: -6 }}>
           {MODES.filter((m) => m.id !== 'swap' || swapOn).map((m) => (
             <button key={m.id} type="button" className={mode === m.id ? 'on' : ''} onClick={() => setParams({ mode: m.id === 'motion' ? null : m.id })}>{m.label}</button>
@@ -215,7 +215,7 @@ export default function MirrorPage() {
           {compareTake ? <Compare take={compareTake} onOpen={() => setViewing(compareTake.id)} /> : takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>Same moves, new everything</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>You act it. <span className="hl">It becomes them.</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>You act it. <span className="hl">It becomes them.</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Film the move</b><span className="dim">Any phone clip. Frame it like the final shot.</span></div>
                 <div><span className="label">02</span><b>Say who and where</b><span className="dim">Add a first frame to lock the look.</span></div>

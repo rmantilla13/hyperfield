@@ -339,23 +339,23 @@ const LOGIN_PAGE = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>OpenField judge preview</title>
+<title>Hyperfield judge preview</title>
 <style>
   :root { color-scheme: dark; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #000; color: #f3eadf;
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #020309; color: #eceffc;
     font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
   form { width: min(360px, calc(100vw - 32px)); display: flex; flex-direction: column; gap: 12px; }
   h1 { font-size: 22px; margin: 0; font-weight: 650; }
-  p { margin: 0; color: #b8ad9f; font-size: 14px; }
-  input { font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,236,210,.18); background: #0b0a09; color: inherit; }
-  button { font: inherit; font-weight: 600; padding: 10px 12px; border-radius: 8px; border: 0; background: #ffb547; color: #1c0e00; cursor: pointer; }
+  p { margin: 0; color: #9aa2c2; font-size: 14px; }
+  input { font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(214,222,255,.18); background: #070913; color: inherit; }
+  button { font: inherit; font-weight: 600; padding: 10px 12px; border-radius: 8px; border: 0; background: #9e8cff; color: #0b0624; cursor: pointer; }
   button:disabled { opacity: .6; cursor: default; }
-  .err { color: #ff8a73; min-height: 1.5em; }
+  .err { color: #ff688a; min-height: 1.5em; }
 </style>
 </head>
 <body>
 <form id="f">
-  <h1>OpenField judge preview</h1>
+  <h1>Hyperfield judge preview</h1>
   <p>A shared preview on a rented GPU. Enter the password from the submission.</p>
   <input id="pw" type="password" autocomplete="current-password" placeholder="Password" required autofocus>
   <button id="go" type="submit">Enter</button>

@@ -92,7 +92,7 @@ export default function ObjectPage() {
     <div className="rail-layout" style={{ gridTemplateColumns: '372px 1fr' }}>
       <aside className="rail">
         <Spill src={presetClip('turntable')} video />
-        <div className="display" style={{ fontSize: 26 }}>Object</div>
+        <div className="display" style={{ fontSize: 17 }}>Object</div>
         <div className="dim" style={{ fontSize: 12.5, marginTop: -4 }}>One still becomes a textured 3D model you can turn, download as GLB and drop into a scene. TRELLIS.2, on your GPU.</div>
 
         <SourceSlot label="Still" value={source} onChange={setSource} accept={['image']}
@@ -160,7 +160,7 @@ export default function ObjectPage() {
           {takes.length === 0 ? (
             <div className="hero-empty">
               <div className="object-hero"><video src={presetClip('turntable')} muted loop autoPlay playsInline /></div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>A still <span className="hl">in the round</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>A still <span className="hl">in the round</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Add a still</b><span className="dim">Or press Make 3D on any image in the Library.</span></div>
                 <div><span className="label">02</span><b>Pick the detail</b><span className="dim">Draft to check the shape, High for the keeper.</span></div>

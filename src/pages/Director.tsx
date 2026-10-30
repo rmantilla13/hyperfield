@@ -204,7 +204,7 @@ export default function DirectorPage() {
     <div className="rail-layout" style={{ gridTemplateColumns: '380px 1fr' }}>
       <aside className="rail">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div className="display" style={{ fontSize: 26 }}>Director</div>
+          <div className="display" style={{ fontSize: 17 }}>Director</div>
           <div className="seg" style={{ width: 216 }}>
             <button type="button" className={mode === 'image' ? 'on' : ''} onClick={() => setParams({ mode: null })}>Frame</button>
             <button type="button" className={mode === 'video' ? 'on' : ''} onClick={() => setParams({ mode: 'video' })}>Shot</button>
@@ -320,7 +320,7 @@ export default function DirectorPage() {
               <div className="hero-empty">
                 <div className="explore-glow" style={{ top: -140, left: -20, right: -20 }}><Spill src={presetClip('crane-up')} video /></div>
                 <div className="label" style={{ marginBottom: 14, position: 'relative' }}>One scene, a shot list, one cut</div>
-                <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Cover the scene <span className="hl">in shots</span></div>
+                <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Cover the scene <span className="hl">in shots</span></div>
                 <div className="steps3">
                   <div><span className="label">01</span><b>Write the scene</b><span className="dim">Set genre, era and speed, or leave them on Auto.</span></div>
                   <div><span className="label">02</span><b>Plan shots</b><span className="dim">A local model splits it into framings, moves and actions. Edit any of it.</span></div>
@@ -331,7 +331,7 @@ export default function DirectorPage() {
               <div className="hero-empty">
                 <div className="explore-glow" style={{ top: -140, left: -20, right: -20 }}><Spill src={presetClip('dolly-zoom')} video /></div>
                 <div className="label" style={{ marginBottom: 14, position: 'relative' }}>Frame first, then shoot</div>
-                <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Direct it <span className="hl">like a set</span></div>
+                <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Direct it <span className="hl">like a set</span></div>
                 <div className="steps3">
                   <div><span className="label">01</span><b>Write the scene</b><span className="dim">Then set genre, camera, light, film, era and grade, or leave them on Auto.</span></div>
                   <div><span className="label">02</span><b>Make frames</b><span className="dim">Pick the hero frame from a few stills.</span></div>

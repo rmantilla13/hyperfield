@@ -84,7 +84,7 @@ function clayMaterial(opts: { ground?: boolean; depth?: boolean; far?: number; t
       uGround: { value: opts.ground ? 1 : 0 },
       uDepth: { value: opts.depth ? 1 : 0 },
       uFar: { value: opts.far ?? 40 },
-      uTint: { value: opts.tint ?? new THREE.Color(1, 0.71, 0.28) },
+      uTint: { value: opts.tint ?? new THREE.Color(0x9e8cff) },
       uTintAmt: { value: opts.tintAmt ?? 0 },
       uKey: { value: new THREE.Vector3(...KEY_DIR) },
       uFill: { value: new THREE.Vector3(...FILL_DIR) },
@@ -93,7 +93,7 @@ function clayMaterial(opts: { ground?: boolean; depth?: boolean; far?: number; t
 }
 
 const BG = new THREE.Color().setRGB(...CLAY.background);
-const ACCENT = new THREE.Color(1, 0.71, 0.28);
+const ACCENT = new THREE.Color(0x9e8cff);
 
 // ---------- GLB props ----------
 

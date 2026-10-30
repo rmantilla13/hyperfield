@@ -77,8 +77,8 @@ export default function ModelView({ src, poster, look = 'lit', spin = true, clas
 
     // Materials as loaded, plus the two inspection looks.
     const originals = new Map<THREE.Mesh, THREE.Material | THREE.Material[]>();
-    const clay = new THREE.MeshStandardMaterial({ color: 0x9a948b, roughness: 0.8, metalness: 0 });
-    const wire = new THREE.MeshBasicMaterial({ color: 0xffb547, wireframe: true });
+    const clay = new THREE.MeshStandardMaterial({ color: 0x9498aa, roughness: 0.8, metalness: 0 });
+    const wire = new THREE.MeshBasicMaterial({ color: 0x9e8cff, wireframe: true });
     applyLook.current = (l) => {
       for (const [mesh, mat] of originals) mesh.material = l === 'clay' ? clay : l === 'wire' ? wire : mat;
     };

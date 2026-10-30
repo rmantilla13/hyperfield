@@ -16,8 +16,8 @@ export default function Setup() {
   return (
     <div className="page-scroll">
       <div className="page-pad" style={{ maxWidth: 980 }}>
-        <h1 className="display" style={{ fontSize: 44, margin: 0 }}>Setup</h1>
-        <p className="dim">OpenField runs your local ComfyUI through the Comfy SDK. Weights live in ComfyUI. Anything marked missing is switched off until its files exist.</p>
+        <h1 className="display" style={{ fontSize: 28, margin: 0 }}>Setup</h1>
+        <p className="dim">Hyperfield runs your local ComfyUI through the Comfy SDK. Weights live in ComfyUI. Anything marked missing is switched off until its files exist.</p>
         <div className="tile" style={{ margin: '18px 0' }}>
           <dl className="kv" style={{ width: '100%' }}>
             <dt>Engine</dt><dd>{st?.target === 'cloud' ? 'Comfy Cloud' : `Local ComfyUI ${st?.version ? `v${st.version}` : ''}`}</dd>
@@ -36,7 +36,7 @@ export default function Setup() {
           {bundles?.map((b) => (
             <div key={b.id} className="tile" style={{ flexDirection: 'column', gap: 6 }}>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', width: '100%' }}>
-                <span className="badge" style={b.ready ? { background: 'rgba(110,231,168,.14)', color: 'var(--ok)' } : b.optional ? undefined : { background: 'rgba(255,93,108,.14)', color: 'var(--bad)' }}>{b.ready ? 'ready' : 'missing'}</span>
+                <span className="badge" style={b.ready ? { background: 'rgb(var(--ok-rgb) / 0.14)', color: 'var(--ok)' } : b.optional ? undefined : { background: 'rgb(var(--bad-rgb) / 0.14)', color: 'var(--bad)' }}>{b.ready ? 'ready' : 'missing'}</span>
                 <b>{b.label}</b>
                 <span className="dim" style={{ marginLeft: 'auto' }}>{b.gb} GB{b.optional ? ' · optional' : ''} · <span className="mono">{b.id}</span></span>
               </div>

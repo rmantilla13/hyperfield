@@ -132,7 +132,7 @@ export default function CutoutPage() {
   return (
     <div className="rail-layout" style={{ gridTemplateColumns: '360px 1fr' }}>
       <aside className="rail">
-        <div className="display" style={{ fontSize: 26 }}>Remove background</div>
+        <div className="display" style={{ fontSize: 17 }}>Remove background</div>
         <div className="dim" style={{ fontSize: 12.5, marginTop: -4 }}>Cut the subject out of a still or a clip. Keep it transparent, or put it somewhere new.</div>
 
         <div className="rail-section">
@@ -214,7 +214,7 @@ export default function CutoutPage() {
           {viewTake ? <CutoutCompare take={viewTake} onOpen={() => setViewing(viewTake.id)} /> : takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>No green screen</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Keep the subject. <span className="hl">Lose the rest.</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Keep the subject. <span className="hl">Lose the rest.</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Add a still or a clip</b><span className="dim">Or press Remove background on any take.</span></div>
                 <div><span className="label">02</span><b>Pick a background</b><span className="dim">Transparent, a color, a blur or a new picture.</span></div>

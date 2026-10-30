@@ -162,7 +162,7 @@ export default function SpeakPage() {
           {takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>{speak ? 'Sound in, picture out' : 'Picture in, sound out'}</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>
                 {speak ? <>Give a face <span className="hl">your voice</span></> : <>Every take <span className="hl">gets a soundtrack</span></>}
               </div>
               <div className="steps3">

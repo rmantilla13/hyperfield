@@ -527,7 +527,7 @@ export default function StagePage() {
     <div className="rail-layout stage-page" style={{ gridTemplateColumns: '380px 1fr' }}>
       <aside className="rail">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div className="display" style={{ fontSize: 26 }}>Stage</div>
+          <div className="display" style={{ fontSize: 17 }}>Stage</div>
           <TierChip app="stage" value={res} onChange={setRes} />
         </div>
 

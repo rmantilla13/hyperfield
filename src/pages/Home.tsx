@@ -84,7 +84,7 @@ export function Apps() {
   return (
     <div className="page-scroll">
       <div className="page-pad">
-        <h1 className="display" style={{ fontSize: 'clamp(48px,6vw,88px)', margin: '8px 0 0' }}>Every tool. <span className="hl">Open.</span></h1>
+        <h1 className="display" style={{ fontSize: 'clamp(31px,3.8vw,56px)', margin: '8px 0 0' }}>Every tool. <span className="hl">Open.</span></h1>
         <p className="dim" style={{ marginTop: 10 }}>Each app is a ComfyUI workflow with a screen on top. All of them run on open weights.</p>
         <div className="picker-top" style={{ margin: '22px 0 18px' }}>
           <div style={{ position: 'relative' }}>
@@ -130,7 +130,7 @@ export function Library() {
     <div className="page-scroll">
       <div className="page-pad" style={{ maxWidth: 1600 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18, flexWrap: 'wrap' }}>
-          <h1 className="display" style={{ fontSize: 40, margin: '0 14px 0 0' }}>Library</h1>
+          <h1 className="display" style={{ fontSize: 26, margin: '0 14px 0 0' }}>Library</h1>
           {['all', 'image', 'video', '3d', 'favorites'].map((f) => (
             <button key={f} type="button" className={`pill ${filter === f ? 'active' : ''}`} onClick={() => setParams({ filter: f === 'all' ? null : f })}>
               {f === '3d' ? '3D' : f[0].toUpperCase() + f.slice(1)}
@@ -161,7 +161,7 @@ export function Soon({ appId }: { appId: string }) {
     <div className="page-scroll">
       <div className="hero-empty">
         <div className="label" style={{ marginBottom: 14 }}>In the workshop</div>
-        <div className="display" style={{ fontSize: 'clamp(40px,6vw,80px)' }}>{a.name}</div>
+        <div className="display" style={{ fontSize: 'clamp(26px,3.8vw,51px)' }}>{a.name}</div>
         <p className="dim" style={{ maxWidth: 520, margin: '16px auto 0' }}>{a.blurb}</p>
         <a className="btn" style={{ marginTop: 22 }} {...linkProps('/apps')}>Back to apps</a>
       </div>
