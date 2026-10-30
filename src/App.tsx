@@ -1,4 +1,4 @@
-/** OpenField shell: top bar + routed page. */
+/** Hyperfield shell: top bar + routed page. */
 import { lazy, Suspense, useEffect } from 'react';
 import { APPS, badgeLabel } from './catalog';
 import { linkProps, useRoute } from './router';
@@ -64,7 +64,7 @@ export default function App() {
   useEffect(() => {
     const name = path === '/' ? 'Explore' : path === '/setup' ? 'Setup' : path === '/library' ? 'Library'
       : APPS.find((a) => a.route.split('?')[0] === path)?.name ?? SECTIONS.find((s) => s.to === path)?.label;
-    document.title = name ? `${name} · OpenField` : 'OpenField';
+    document.title = name ? `${name} · Hyperfield` : 'Hyperfield';
   }, [path]);
 
   const isActive = (to: string) => {
@@ -78,7 +78,7 @@ export default function App() {
   return (
     <div className={`app ${judge ? 'has-judge' : ''}`}>
       <header className="topbar">
-        <a className="brand" {...linkProps('/')}><Logo /><span className="brand-word">OpenField</span></a>
+        <a className="brand" {...linkProps('/')}><Logo /><span className="brand-word">Hyperfield</span></a>
         <nav className="nav">
           {SECTIONS.map((s) => <a key={s.to} className={`nav-link ${isActive(s.to) ? 'active' : ''}`} {...linkProps(s.to)}>{s.label}</a>)}
           <span className="nav-sep" />

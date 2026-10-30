@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hyperfield Brand</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<style>
+  @font-face { font-family: 'Archivo'; src: url('fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations'); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+  @font-face { font-family: 'JetBrains Mono'; src: url('fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+
+  /* the same tokens as src/styles.css */
+  :root {
+    --star-rgb: 214 222 255; --accent-rgb: 158 140 255; --glow-rgb: 124 108 255; --ion-rgb: 92 214 255;
+    --bg: #020309; --bg-1: #070913; --panel: #0c0f1d; --panel-2: #131729; --panel-3: #1b2036; --panel-4: #252b45;
+    --line: rgb(var(--star-rgb) / 0.07); --line-2: rgb(var(--star-rgb) / 0.14);
+    --text: #eceffc; --dim: #9aa2c2; --mute: #646b8b;
+    --accent: #9e8cff; --accent-hi: #c4b9ff; --accent-deep: #7560ff; --accent-ink: #0b0624; --accent-soft: rgb(var(--accent-rgb) / 0.13);
+    --lamp: linear-gradient(115deg, #e2dcff 0%, #ab9dff 30%, #8a8cff 62%, #5cd6ff 100%);
+    --lamp-glow: 0 10px 34px -10px rgb(var(--glow-rgb) / 0.75), 0 0 0 1px rgb(var(--accent-rgb) / 0.3);
+    --ok: #68f0c4; --bad: #ff688a; --cool: #5cd6ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0; color: var(--text); font: 15px/1.55 'Archivo', system-ui, sans-serif; font-variation-settings: 'wdth' 100;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(1100px 560px at 84% -10%, rgb(var(--glow-rgb) / 0.13), transparent 62%),
+      radial-gradient(900px 520px at -8% 60%, rgb(var(--ion-rgb) / 0.05), transparent 60%),
+      var(--bg);
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.6;
+    background-image:
+      radial-gradient(1px 1px at 37px 59px, rgb(var(--star-rgb) / 0.75), transparent),
+      radial-gradient(1px 1px at 151px 23px, rgb(var(--star-rgb) / 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 97px 181px, rgb(var(--star-rgb) / 0.85), transparent),
+      radial-gradient(1px 1px at 263px 141px, rgb(var(--ion-rgb) / 0.65), transparent),
+      radial-gradient(1px 1px at 19px 293px, rgb(var(--accent-rgb) / 0.65), transparent),
+      radial-gradient(1px 1px at 331px 401px, rgb(var(--star-rgb) / 0.55), transparent);
+    background-size: 211px 211px, 293px 293px, 347px 347px, 419px 419px, 503px 503px, 587px 587px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 96px; }
+  .disp { font-variation-settings: 'wdth' 112; font-weight: 700; text-transform: uppercase; letter-spacing: 0.015em; line-height: 1; }
+  .word { font-variation-settings: 'wdth' 125; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; }
+  .mono { font: 12px/1.5 'JetBrains Mono', ui-monospace, monospace; color: var(--dim); }
+  .dim { color: var(--dim); }
+  .hl { color: var(--accent); }
+
+  header.hero { padding: 96px 0 72px; display: grid; justify-items: start; gap: 28px; }
+  header.hero img { width: 132px; height: 132px; filter: drop-shadow(0 20px 60px rgb(var(--glow-rgb) / 0.45)); }
+  header.hero .word { font-size: clamp(30px, 5.4vw, 58px); }
+  header.hero p { margin: 0; max-width: 56ch; color: var(--dim); font-size: 17px; }
+
+  section { padding: 56px 0 8px; border-top: 1px solid var(--line); }
+  .sec-head { display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 18px; row-gap: 12px; margin-bottom: 26px; }
+  .sec-head .n { font: 12px/1 'JetBrains Mono', monospace; color: var(--accent); }
+  .sec-head h2 { margin: 0; font-size: 22px; }
+  .sec-head p { margin: 0; color: var(--dim); grid-column: 1 / -1; max-width: 70ch; }
+
+  .panel { background: var(--panel); border-radius: 18px; box-shadow: inset 0 0 0 1px var(--line); padding: 24px; }
+  .grid { display: grid; gap: 12px; }
+  .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cap { font-size: 12.5px; color: var(--mute); margin-top: 14px; }
+
+  .sizes { display: flex; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+  .sizes figure { margin: 0; display: grid; justify-items: center; gap: 10px; }
+  .sizes figcaption { font: 11px/1 'JetBrains Mono', monospace; color: var(--mute); }
+  .lockup { display: flex; align-items: center; gap: 14px; }
+  .lockup img { width: 40px; height: 40px; }
+  .lockup .word { font-size: 20px; }
+  .lockup.sm img { width: 26px; height: 26px; }
+  .lockup.sm .word { font-size: 13.5px; }
+  .on-hull { background: var(--panel-3); }
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .sw { border-radius: 14px; overflow: hidden; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
+  .sw i { display: block; height: 84px; box-shadow: inset 0 -1px 0 var(--line); }
+  .sw div { padding: 10px 12px 12px; display: grid; gap: 2px; }
+  .sw b { font-size: 13.5px; font-weight: 650; }
+  .sw span { font: 11px/1.4 'JetBrains Mono', monospace; color: var(--dim); }
+  .sw.wide { grid-column: span 2; }
+  .group-label { font-size: 12px; font-weight: 600; color: var(--dim); margin: 22px 0 10px; }
+  .group-label:first-child { margin-top: 0; }
+
+  .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .type-row:last-child { border-bottom: 0; }
+  .type-row .spec b { display: block; font-size: 14px; }
+  .type-row .spec span { font: 11.5px/1.5 'JetBrains Mono', monospace; color: var(--mute); }
+
+  .demo { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .generate {
+    width: 300px; max-width: 100%; border: 0; border-radius: 14px; padding: 15px 18px; background: var(--lamp); color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: space-between; font: 750 13px/1 'Archivo', sans-serif; font-variation-settings: 'wdth' 112;
+    letter-spacing: 0.12em; text-transform: uppercase; box-shadow: var(--lamp-glow), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+  .generate small { font: 600 12px/1 'Archivo', sans-serif; font-variation-settings: 'wdth' 100; letter-spacing: 0; text-transform: none; opacity: 0.72; }
+  .generate.off { background: var(--panel-2); color: var(--mute); box-shadow: inset 0 0 0 1px rgb(var(--accent-rgb) / 0.14); }
+  .chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; }
+  .chip.on { border-color: rgb(var(--accent-rgb) / 0.6); color: var(--accent-hi); background: var(--accent-soft); }
+  .badge { font: 650 10.5px/1 'Archivo', sans-serif; padding: 3px 6px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+  .badge.ok { background: rgb(104 240 196 / 0.13); color: var(--ok); }
+  .badge.bad { background: rgb(255 104 138 / 0.13); color: var(--bad); }
+  .nav { display: flex; gap: 2px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgb(4 5 12 / 0.78); box-shadow: inset 0 0 0 1px var(--line); }
+  .nav a { position: relative; padding: 7px 11px; color: var(--dim); font-weight: 550; font-size: 14px; }
+  .nav a.on { color: var(--text); }
+  .nav a.on::after { content: ''; position: absolute; left: 11px; right: 11px; bottom: -9px; height: 2px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 12px 1px rgb(var(--accent-rgb) / 0.7); }
+
+  ul.rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  ul.rules li { padding: 14px 16px; border-radius: 12px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
+  ul.rules b { color: var(--accent-hi); font-weight: 650; }
+  footer { margin-top: 64px; color: var(--mute); font-size: 12.5px; }
+
+  @media (max-width: 760px) {
+    .g2, .g3 { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 10px; }
+    .sw.wide { grid-column: auto; }
+    header.hero { padding: 56px 0 44px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <img src="hyperfield-mark.svg" alt="Hyperfield mark" />
+    <div class="word">Hyperfield</div>
+    <p>An open studio for video, stills and 3D on your own GPU. The brand is a deep field: the interface stays dark and quiet, and the work gives off the light.</p>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="n">01</span><h2 class="disp">The mark</h2>
+      <p>A field of stars bent around one, with that star's orbit. The eight points pull away from the centre the way light bends around a mass. The star in the middle is the work, and the rest of the field is in orbit around it. Below 20px the field drops away and only the star, its ring and the planet remain.</p></div>
+    <div class="grid g2">
+      <div class="panel">
+        <div class="sizes">
+          <figure><img src="hyperfield-mark.svg" width="128" height="128" alt="" /><figcaption>128</figcaption></figure>
+          <figure><img src="hyperfield-mark.svg" width="64" height="64" alt="" /><figcaption>64</figcaption></figure>
+          <figure><img src="hyperfield-mark.svg" width="26" height="26" alt="" /><figcaption>26 · top bar</figcaption></figure>
+        </div>
+        <div class="cap">Primary mark · hyperfield-mark.svg</div>
+      </div>
+      <div class="panel">
+        <div class="sizes">
+          <figure><img src="hyperfield-mark-small.svg" width="64" height="64" alt="" /><figcaption>64</figcaption></figure>
+          <figure><img src="hyperfield-mark-small.svg" width="32" height="32" alt="" /><figcaption>32</figcaption></figure>
+          <figure><img src="hyperfield-mark-small.svg" width="16" height="16" alt="" /><figcaption>16 · favicon</figcaption></figure>
+        </div>
+        <div class="cap">Small mark · hyperfield-mark-small.svg · favicon.svg</div>
+      </div>
+      <div class="panel"><div class="lockup"><img src="hyperfield-mark.svg" alt="" /><span class="word">Hyperfield</span></div><div class="cap">Lockup on void. Gap between mark and word is a third of the mark.</div></div>
+      <div class="panel on-hull"><div class="lockup sm"><img src="hyperfield-mark.svg" alt="" /><span class="word">Hyperfield</span></div><div class="cap">Lockup at top-bar size, on hull.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="n">02</span><h2 class="disp">Color</h2>
+      <p>Cool hull metal in deep space. Nebula violet is the one signal color. Generate is plasma, a violet-to-ion gradient. Text is starlight, never pure white. Every tint in the stylesheet comes from a channel token such as <span class="mono">--accent-rgb</span>, so a palette change there is a single edit. The logo, favicon, 3D accents and the phone and judge pages carry the hex values directly.</p></div>
+    <div class="group-label">Space · surfaces</div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#020309"></i><div><b>Void</b><span>--bg · #020309</span></div></div>
+      <div class="sw"><i style="background:#070913"></i><div><b>Deep</b><span>--bg-1 · #070913</span></div></div>
+      <div class="sw"><i style="background:#0c0f1d"></i><div><b>Hull</b><span>--panel · #0c0f1d</span></div></div>
+      <div class="sw"><i style="background:#131729"></i><div><b>Hull 2</b><span>--panel-2 · #131729</span></div></div>
+      <div class="sw"><i style="background:#1b2036"></i><div><b>Hull 3</b><span>--panel-3 · #1b2036</span></div></div>
+      <div class="sw"><i style="background:#252b45"></i><div><b>Hull 4</b><span>--panel-4 · #252b45</span></div></div>
+    </div>
+    <div class="group-label">Light · text</div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#eceffc"></i><div><b>Starlight</b><span>--text · #eceffc</span></div></div>
+      <div class="sw"><i style="background:#9aa2c2"></i><div><b>Dust</b><span>--dim · #9aa2c2</span></div></div>
+      <div class="sw"><i style="background:#646b8b"></i><div><b>Haze</b><span>--mute · #646b8b</span></div></div>
+    </div>
+    <div class="group-label">Signal</div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#9e8cff"></i><div><b>Nebula</b><span>--accent · #9e8cff</span></div></div>
+      <div class="sw"><i style="background:#c4b9ff"></i><div><b>Nebula high</b><span>--accent-hi · #c4b9ff</span></div></div>
+      <div class="sw"><i style="background:#7560ff"></i><div><b>Nebula deep</b><span>--accent-deep · #7560ff</span></div></div>
+      <div class="sw"><i style="background:#5cd6ff"></i><div><b>Ion</b><span>--cool · #5cd6ff</span></div></div>
+      <div class="sw wide"><i style="background:var(--lamp)"></i><div><b>Plasma</b><span>--lamp · #e2dcff → #ab9dff → #8a8cff → #5cd6ff</span></div></div>
+    </div>
+    <div class="group-label">State</div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#68f0c4"></i><div><b>Aurora</b><span>--ok · #68f0c4</span></div></div>
+      <div class="sw"><i style="background:#ff688a"></i><div><b>Red giant</b><span>--bad · #ff688a</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="n">03</span><h2 class="disp">Type</h2>
+      <p>One family, Archivo. Its width axis sets the tone: expanded for names and headlines, fully expanded and wide-tracked for the wordmark, normal width for the interface.</p></div>
+    <div class="panel">
+      <div class="type-row"><div class="spec"><b>Wordmark</b><span>wdth 125 · 700 · +22% tracking</span></div><div class="word" style="font-size:28px">Hyperfield</div></div>
+      <div class="type-row"><div class="spec"><b>Display</b><span>wdth 112 · 700 · uppercase · +1.5%</span></div><div class="disp" style="font-size:clamp(26px,3.8vw,44px)">Direct a shot <span class="hl">in three moves</span></div></div>
+      <div class="type-row"><div class="spec"><b>Interface</b><span>wdth 100 · 400–650 · 14/1.45</span></div><div>Drop a still, or skip it and go text to video. Camera moves and effects come as presets. LTX-2.5 renders it locally, no credits.</div></div>
+      <div class="type-row"><div class="spec"><b>Mono</b><span>JetBrains Mono · 12</span></div><div class="mono">npm run models -- --only qwen</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="n">04</span><h2 class="disp">In use</h2>
+      <p>The signal color appears once per area: the active tab, the selected chip, Generate. Everything else stays in hull and starlight.</p></div>
+    <div class="grid g2">
+      <div class="panel demo">
+        <button class="generate" type="button">Generate <small>1280×704 · 5s</small></button>
+        <button class="generate off" type="button">Generate <small>add a prompt</small></button>
+      </div>
+      <div class="panel demo">
+        <span class="chip on">720p</span><span class="chip">5s</span><span class="chip">Auto</span>
+        <span class="badge">New</span><span class="badge ok">ready</span><span class="badge bad">missing</span>
+      </div>
+      <div class="panel" style="grid-column:1/-1"><div class="nav"><a class="on">Explore</a><a>Image</a><a>Edit</a><a>Video</a><a>Apps</a><a>Library</a></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="n">05</span><h2 class="disp">Rules</h2></div>
+    <ul class="rules">
+      <li><b>The work is the brightest thing on screen.</b> The nebula glow and the star dust stay faint, and the star dust never moves.</li>
+      <li><b>One signal color.</b> Nebula violet marks what is selected or about to happen. Ion cyan is only for secondary information and the far end of the plasma.</li>
+      <li><b>Starlight, not white.</b> Use #eceffc for text and starlight channels for hairlines. Pure white is only for highlights on the plasma.</li>
+      <li><b>The mark lives on dark.</b> Don't recolor the ring, rotate the orbit, or put the mark on a light or busy background without its hull square.</li>
+    </ul>
+  </section>
+
+  <footer>Hyperfield brand system · v1 · October 2026. Built on OpenField (MIT, © 2026 David Wexler / Strangeloop Studios).</footer>
+</div>
+</body>
+</html>

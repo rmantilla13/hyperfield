@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#000000">
-<title>OpenField · Film the move</title>
+<meta name="theme-color" content="#020309">
+<title>Hyperfield · Film the move</title>
 <style>
   :root {
-    --bg: #000; --panel: #121110; --panel-2: #1a1917; --line: rgba(255,236,210,.1);
-    --text: #efeae0; --dim: #a8a196; --mute: #6f695f;
-    --accent: #ffb547; --accent-ink: #1c0e00; --bad: #ff6470; --ok: #7be0a6;
-    --lamp: linear-gradient(180deg, #ffd794 0%, #ffb547 42%, #ec8a2c 100%);
+    --bg: #020309; --panel: #0c0f1d; --panel-2: #131729; --line: rgba(214,222,255,.1);
+    --text: #eceffc; --dim: #9aa2c2; --mute: #646b8b;
+    --accent: #9e8cff; --accent-ink: #0b0624; --bad: #ff688a; --ok: #68f0c4;
+    --lamp: linear-gradient(115deg, #e2dcff 0%, #ab9dff 30%, #8a8cff 62%, #5cd6ff 100%);
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); }
@@ -21,7 +21,7 @@
     -webkit-font-smoothing: antialiased;
   }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; }
-  .brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px 2px rgba(255,181,71,.7); }
+  .brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px 2px rgba(158,140,255,.7); }
   main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
   h1 { margin: 0; font-size: clamp(38px, 12vw, 60px); line-height: .92; font-weight: 850; text-transform: uppercase; letter-spacing: -.01em; }
   h1 span { color: var(--accent); }
@@ -30,7 +30,7 @@
     display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
     padding: 26px 20px; border-radius: 20px; border: 0; cursor: pointer;
     background: var(--lamp); color: var(--accent-ink); font-family: inherit; font-size: 22px; font-weight: 850; line-height: 1; text-transform: uppercase; letter-spacing: .04em;
-    box-shadow: 0 14px 44px -12px rgba(255,150,50,.75), 0 0 0 1px rgba(255,200,120,.25), inset 0 1px 0 rgba(255,255,255,.5);
+    box-shadow: 0 14px 44px -12px rgba(124,108,255,.75), 0 0 0 1px rgba(158,140,255,.3), inset 0 1px 0 rgba(255,255,255,.5);
   }
   .lamp:active { transform: translateY(1px); filter: brightness(.96); }
   .ghost { background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 14px; padding: 14px; font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1; width: 100%; cursor: pointer; }
@@ -40,13 +40,13 @@
   .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--dim); font-variant-numeric: tabular-nums; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
   .err { color: var(--bad); }
-  .done-dot { width: 64px; height: 64px; border-radius: 50%; background: var(--lamp); box-shadow: 0 0 50px 6px rgba(255,181,71,.45); }
+  .done-dot { width: 64px; height: 64px; border-radius: 50%; background: var(--lamp); box-shadow: 0 0 50px 6px rgba(124,108,255,.45); }
   footer { color: var(--mute); font-size: 13px; text-align: center; }
   [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-  <div class="brand"><i></i>OpenField</div>
+  <div class="brand"><i></i>Hyperfield</div>
   <main>
     <section id="pick">
       <h1>Film <span>the move.</span></h1>
@@ -77,7 +77,7 @@
       <p>This link is used up. Scan a new code to send another take.</p>
     </section>
   </main>
-  <footer id="foot">Sends one clip straight to OpenField on your computer.</footer>
+  <footer id="foot">Sends one clip straight to Hyperfield on your computer.</footer>
 
 <script>
 (function () {
@@ -123,7 +123,7 @@
     xhr.onload = function () {
       var body = {};
       try { body = JSON.parse(xhr.responseText); } catch (e) {}
-      if (xhr.status === 200) { finished = true; show('done'); $('foot').textContent = 'OpenField'; return; }
+      if (xhr.status === 200) { finished = true; show('done'); $('foot').textContent = 'Hyperfield'; return; }
       fail(body.error || ('Upload failed (' + xhr.status + ').'));
       if (xhr.status === 404 || xhr.status === 410) $('retry').hidden = true;
     };

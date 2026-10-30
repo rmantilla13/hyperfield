@@ -19,7 +19,7 @@ type Phase =
 const ENDED: Record<string, string> = {
   expired: 'The code expired. Make a new one when you are ready to film.',
   abuse: 'The link closed after too many bad requests on the network.',
-  replaced: 'The code moved to another OpenField window.',
+  replaced: 'The code moved to another Hyperfield window.',
 };
 
 export function PhoneDrop({ onClip }: { onClip: (token: string, name: string) => void | Promise<void> }) {
@@ -147,8 +147,8 @@ function Qr({ text }: { text: string }) {
   const q = 4; // quiet zone, in modules
   return (
     <svg viewBox={`${-q} ${-q} ${n + 2 * q} ${n + 2 * q}`} shapeRendering="crispEdges" role="img" aria-label="QR code for the phone link">
-      <rect x={-q} y={-q} width={n + 2 * q} height={n + 2 * q} fill="#efeae0" />
-      <path d={d} fill="#0b0a09" />
+      <rect x={-q} y={-q} width={n + 2 * q} height={n + 2 * q} fill="#eceffc" />
+      <path d={d} fill="#070913" />
     </svg>
   );
 }

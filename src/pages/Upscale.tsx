@@ -161,7 +161,7 @@ export default function UpscalePage() {
     <div className="rail-layout" style={{ gridTemplateColumns: '360px 1fr' }}>
       <aside className="rail">
         {source && <Spill src={source.take ? posterUrl(source.take) : source.url} video={!source.take && video} key={source.url} />}
-        <div className="display" style={{ fontSize: 26 }}>Upscale</div>
+        <div className="display" style={{ fontSize: 17 }}>Upscale</div>
 
         <div className="rail-section">
           <div className="label">Source</div>
@@ -190,7 +190,7 @@ export default function UpscalePage() {
           <div className="rail-section">
             <div className="label">Model</div>
             {SHARPEN_MODELS.map((m) => (
-              <button key={m.id} type="button" className="rail-row" onClick={() => setSharpModel(m.id)} style={sharpModel === m.id ? { borderColor: 'rgba(255, 181, 71, 0.6)' } : undefined}>
+              <button key={m.id} type="button" className="rail-row" onClick={() => setSharpModel(m.id)} style={sharpModel === m.id ? { borderColor: 'rgb(var(--accent-rgb) / 0.6)' } : undefined}>
                 <span><span className="val" style={{ color: sharpModel === m.id ? 'var(--accent-hi)' : undefined }}>{m.label}</span><span className="dim" style={{ fontSize: 12 }}>{m.note}</span></span>
                 {sharpModel === m.id && <Icon name="chev" size={14} />}
               </button>
@@ -278,7 +278,7 @@ export default function UpscalePage() {
           ) : takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>More pixels, three ways</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Sharpen it, redraw it, <span className="hl">or dream it bigger</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Sharpen it, redraw it, <span className="hl">or dream it bigger</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Sharpen</b><span className="dim">2x in seconds. Every pixel stays where it was.</span></div>
                 <div><span className="label">02</span><b>Redraw</b><span className="dim">SeedVR2 rebuilds texture and fine detail at 1080p or 1440p.</span></div>

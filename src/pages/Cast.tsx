@@ -36,7 +36,7 @@ export default function CastPage() {
       <div className="page-pad" style={{ maxWidth: 1500 }}>
         <div className="cast-head">
           <div>
-            <h1 className="display" style={{ fontSize: 'clamp(44px,5.4vw,80px)', margin: '8px 0 0' }}>Your <span className="hl">cast</span></h1>
+            <h1 className="display" style={{ fontSize: 'clamp(28px,3.5vw,51px)', margin: '8px 0 0' }}>Your <span className="hl">cast</span></h1>
             <p className="dim" style={{ marginTop: 10, maxWidth: 640 }}>
               Save a character, prop or place once. Type <b className="mono" style={{ color: 'var(--accent-hi)' }}>@</b> in any prompt to bring it in:
               stills compose it from its pictures, videos hold it on a reference sheet, so the same face and the same coat show up in every shot.
@@ -50,7 +50,7 @@ export default function CastPage() {
         {cast.length === 0 && !open ? (
           <div className="hero-empty" style={{ paddingTop: 40 }}>
             <div className="fan">{[0, 1, 2, 3].map((i) => <div key={i} className="cast-ghost"><Icon name={['person', 'person', 'grid', 'image'][i]} size={34} /></div>)}</div>
-            <div className="display" style={{ fontSize: 'clamp(30px,4vw,52px)' }}>Nobody cast yet</div>
+            <div className="display" style={{ fontSize: 'clamp(19px,2.6vw,33px)' }}>Nobody cast yet</div>
             <p className="dim" style={{ marginTop: 12 }}>Drop a few pictures of the same person here, or open any still and pick Save to cast.</p>
           </div>
         ) : (

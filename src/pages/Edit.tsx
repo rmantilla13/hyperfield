@@ -161,7 +161,7 @@ export default function EditPage() {
     <div className="rail-layout" style={{ gridTemplateColumns: '372px 1fr' }}>
       <aside className="rail">
         <Spill src={presetClip(app.cover)} video />
-        <div className="display" style={{ fontSize: 26 }}>{app.name}</div>
+        <div className="display" style={{ fontSize: 17 }}>{app.name}</div>
         <div className="edit-apps">
           {EDIT_APPS.map((a) => (
             <button key={a.id} type="button" className={`edit-app ${a.id === app.id ? 'on' : ''}`} onClick={() => setParams({ app: a.id === 'free' ? null : a.id })} title={a.blurb}>
@@ -291,7 +291,7 @@ export default function EditPage() {
               <div className="fan">
                 {['orbit-right', 'golden', 'push-in', 'pull-back'].map((id) => <div key={id}><Clip src={presetClip(id)} className="" /></div>)}
               </div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Change a still <span className="hl">with words</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Change a still <span className="hl">with words</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Add an image</b><span className="dim">Or press Edit on any still in the Library.</span></div>
                 <div><span className="label">02</span><b>Pick an app</b><span className="dim">A new angle, nine shots, new light, a bigger frame.</span></div>
@@ -361,7 +361,7 @@ export function StillCompare({ take, actions }: { take: Take; actions?: React.Re
           onMouseMove={(e) => { if (e.buttons === 1) set(e); }} onClick={set}>
           <img src={mediaUrl(take.id)} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           {before && (
-            <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${100 - x}% 0 0)`, background: inner ? '#0b0a09' : undefined }}>
+            <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${100 - x}% 0 0)`, background: inner ? '#070913' : undefined }}>
               <img src={inputUrl(before)} alt="" style={{ position: 'absolute', ...pos, objectFit: 'cover' }} />
             </div>
           )}
@@ -407,7 +407,7 @@ function MaskPainter({ source, onDone, onCancel }: { source: Source; onDone: (to
     if (e.buttons !== 1) { last.current = null; return; }
     const c = canvas.current!.getContext('2d')!;
     const p = at(e);
-    c.strokeStyle = 'rgba(255, 181, 71, 1)';
+    c.strokeStyle = '#9e8cff'; // --accent; a canvas can't read CSS variables
     c.lineWidth = brush * Math.max(W, H);
     c.lineCap = 'round';
     c.beginPath();

@@ -88,7 +88,7 @@ export default function ImagePage() {
             <div className="fan">
               {['ink-bloom', 'golden', 'neon-rain', 'bloom'].map((id) => <div key={id}><Clip src={presetClip(id)} className="" /></div>)}
             </div>
-            <div className="display" style={{ fontSize: 'clamp(38px,5.4vw,72px)' }}>Make an image with <span className="hl">{model.label}</span></div>
+            <div className="display" style={{ fontSize: 'clamp(24px,3.5vw,46px)' }}>Make an image with <span className="hl">{model.label}</span></div>
             <p className="dim" style={{ marginTop: 14 }}>Open weights, on your own GPU. Describe it below.</p>
           </div>
         ) : (

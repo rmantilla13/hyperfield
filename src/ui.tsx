@@ -1,5 +1,5 @@
 /** Shared UI kit: icons, chips with menus, media cards, GPU chip, logo. */
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { api, posterUrl, mediaUrl, turntableUrl, type Take } from './api';
 import { isActive, isImage, isModel, refreshStatus, settingsOf, toast, useStore } from './store';
 import { APP_MAX_TIER, RENDER_TIERS, appTier, tierCapNote, tierDef, tiersUpTo, type RenderTier, type TierApp } from './renderTier';
@@ -53,16 +53,28 @@ export function Icon({ name, size = 16 }: { name: keyof typeof P | string; size?
   );
 }
 
+// The field: eight points bent outward around one star; the orbit carries a planet.
+const FIELD: [number, number, number, number][] = [
+  [5.6, 5.6, 0.95, 0.4], [13, 4.5, 1.05, 0.55], [20.4, 5.6, 0.95, 0.4], [4.5, 13, 1.05, 0.55],
+  [21.5, 13, 1.05, 0.55], [5.6, 20.4, 0.95, 0.4], [13, 21.5, 1.05, 0.55], [20.4, 20.4, 0.95, 0.4],
+];
+
 export function Logo({ size = 26 }: { size?: number }) {
-  // A field of points; one is lit.
+  // A field of stars bent around one; under 20px only the star and its orbit survive.
+  const id = useId().replace(/[^\w-]/g, '');
+  const small = size < 20;
   return (
-    <svg width={size} height={size} viewBox="0 0 26 26" aria-label="OpenField">
-      <rect width="26" height="26" rx="7" fill="#1a1917" />
-      {[0, 1, 2].flatMap((r) => [0, 1, 2].map((c) => (
-        <circle key={`${r}${c}`} cx={7 + c * 6} cy={7 + r * 6} r={r === 0 && c === 2 ? 2.6 : 1.5}
-          fill={r === 0 && c === 2 ? '#ffb547' : 'rgba(239,234,224,.5)'}
-          style={r === 0 && c === 2 ? { filter: 'drop-shadow(0 0 3px rgba(255,181,71,.9))' } : undefined} />
-      )))}
+    <svg width={size} height={size} viewBox="0 0 26 26" aria-label="Hyperfield">
+      <defs>
+        <radialGradient id={`${id}bg`} cx="50%" cy="36%" r="78%"><stop offset="0" stopColor="#1c2050" /><stop offset="1" stopColor="#060812" /></radialGradient>
+        <linearGradient id={`${id}ring`} x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#9e8cff" /><stop offset="1" stopColor="#5cd6ff" /></linearGradient>
+        <radialGradient id={`${id}core`}><stop offset="0" stopColor="#fff" /><stop offset=".5" stopColor="#e2dcff" /><stop offset="1" stopColor="#9e8cff" /></radialGradient>
+      </defs>
+      <rect width="26" height="26" rx="7" fill={`url(#${id}bg)`} />
+      {!small && FIELD.map(([cx, cy, r, o]) => <circle key={`${cx},${cy}`} cx={cx} cy={cy} r={r} fill="#d6deff" opacity={o} />)}
+      <ellipse cx="13" cy="13" rx={small ? 9.4 : 7.6} ry={small ? 3.6 : 2.7} transform="rotate(-30 13 13)" fill="none" stroke={`url(#${id}ring)`} strokeWidth={small ? 1.6 : 1.3} />
+      <circle cx="13" cy="13" r={small ? 3.4 : 2.8} fill={`url(#${id}core)`} style={{ filter: 'drop-shadow(0 0 2.5px rgba(196,185,255,.9))' }} />
+      <circle cx={small ? 21.2 : 19.3} cy={small ? 9.6 : 9.1} r={small ? 1.7 : 1.25} fill="#5cd6ff" />
     </svg>
   );
 }

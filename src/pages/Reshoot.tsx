@@ -99,7 +99,7 @@ export default function ReshootPage() {
   return (
     <div className="rail-layout" style={{ gridTemplateColumns: '360px 1fr' }}>
       <aside className="rail">
-        <div className="display" style={{ fontSize: 26 }}>Reshoot</div>
+        <div className="display" style={{ fontSize: 17 }}>Reshoot</div>
         <div className="rail-section">
           <div className="label">Your clip</div>
           {clip ? (
@@ -170,7 +170,7 @@ export default function ReshootPage() {
           {compareTake ? <Compare take={compareTake} onOpen={() => setViewing(compareTake.id)} /> : previewId ? <AnglePreview take={preview} /> : takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>A second camera, after the fact</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>Move the camera <span className="hl">you already rolled</span></div>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>Move the camera <span className="hl">you already rolled</span></div>
               <div className="steps3">
                 <div><span className="label">01</span><b>Add a clip</b><span className="dim">Anything with a clear subject.</span></div>
                 <div><span className="label">02</span><b>Aim the new camera</b><span className="dim">Orbit and height. Preview shows what the old camera never saw in magenta.</span></div>

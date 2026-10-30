@@ -183,7 +183,7 @@ export default function ExtendPage() {
           {takes.length === 0 ? (
             <div className="hero-empty">
               <div className="label" style={{ marginBottom: 14 }}>{transition ? 'Two takes, one move' : 'The shot keeps rolling'}</div>
-              <div className="display" style={{ fontSize: 'clamp(34px,4.6vw,60px)' }}>
+              <div className="display" style={{ fontSize: 'clamp(22px,2.9vw,38px)' }}>
                 {transition ? <>Cut <span className="hl">without a cut</span></> : <>Roll past <span className="hl">the last frame</span></>}
               </div>
               <div className="steps3">
